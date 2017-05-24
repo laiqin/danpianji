@@ -1,0 +1,36 @@
+#include  "reg52.h"
+
+sbit LSA=P2^2;
+sbit LSB=P2^3;
+sbit LSC=P2^4;
+typedef unsigned char u8;
+typedef unsigned int u16;
+u8 code smgduan[]={0x06,0x5b,0x4f,0x66};
+void delay(u16 i)
+{
+	while(i--);
+}
+void display()
+{
+	u8 i;
+	
+for(i=0;i++;i<4)
+   {switch(i)
+     {case 0:LSA=0;LSB=0;LSC=0;break;
+      case 1:LSA=1;LSB=0;LSC=0;break;
+      case 2:LSA=0;LSB=1;LSC=0;break;
+      case 3:LSA=1;LSB=1;LSC=0;break;
+      }
+			P0=smgduan[i];
+			delay(100);
+			P0=0x00;
+   }
+}
+void main()
+{
+	while (1)
+	{
+display();
+}
+
+}
