@@ -1,0 +1,29 @@
+#include "reg52.h"
+sbit k1=P3^1;
+sbit led=P1^0;
+typedef unsigned char u8;
+typedef unsigned int u16;
+void delay(u16 i)
+{
+while (i--);
+}
+
+void keypros()
+{
+    if(k1==0)
+    {
+       delay(1000);
+       if(k1==0)
+	     {
+				 led=~led;
+       }
+    while(!k1);
+    }
+}
+void main()
+{
+while (1)
+{
+	keypros();
+}
+}
